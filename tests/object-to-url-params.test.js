@@ -42,3 +42,13 @@ test('should not add empty string values in an object to the parameterized strin
   assert.equal(params(data), expectedString);
   assert.end();
 });
+test('should encode string so that we handle spaces and characters', (assert) => {
+  const data =  {
+    test1: 1,
+    test2: 2,
+    test3: 'testing and testing'
+  };
+  const expectedString = 'test1=1&test2=2&test3=testing%20and%20testing';
+  assert.equal(params(data), expectedString);
+  assert.end();
+});
