@@ -4,8 +4,8 @@ export function params(obj) {
       return;
     }
     if(Array.isArray(obj[key])) {
-      return obj[key].map(item => `${key}=${item}`).join('&');
+      return obj[key].map(item => encodeURI(`${key}=${item}`)).join('&');
     }
-    return `${key}=${obj[key]}`;
+    return encodeURI(`${key}=${obj[key]}`);
   }).filter(item => item).join('&');
 }
